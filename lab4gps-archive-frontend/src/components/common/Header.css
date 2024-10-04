@@ -1,0 +1,52 @@
+/* General styling for larger screens */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px; /* Reduced padding for a smaller height */
+    background-color: #141e3f; /* Lab4GPS Blue */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.header-logo img {
+    height: 52px; /* Reduced the logo height */
+    width: 54px;
+}
+
+.header-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px; /* Reduced gap between navigation items */
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+    color: #00CC99; /* Lab4GPS Green */
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 5px 15px; /* Further reduced padding for small screens */
+    }
+
+    .header-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-logo img {
+        height: 40px; /* Further reduced the logo height for smaller screens */
+    }
+}

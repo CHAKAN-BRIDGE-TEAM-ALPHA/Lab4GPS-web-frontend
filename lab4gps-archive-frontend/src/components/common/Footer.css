@@ -1,0 +1,33 @@
+/* General styling for larger screens */
+.footer {
+    background-color: #141e3f; /* Lab4GPS Blue */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #CCCCCC; /* Light Gray */
+}
+
+.footer a:hover {
+    color: #00CC99; /* Lab4GPS Green */
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+    .footer ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

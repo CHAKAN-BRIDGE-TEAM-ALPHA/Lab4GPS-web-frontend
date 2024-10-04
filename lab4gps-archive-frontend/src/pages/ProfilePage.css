@@ -1,0 +1,103 @@
+/* Styling for larger screens */
+.profile-page {
+    padding: 40px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .profile-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .profile-header h1 {
+    font-size: 2.5rem;
+    color: #141e3f; /* Lab4GPS Blue */
+  }
+  
+  .profile-header p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .profile-info {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+  }
+  
+  .profile-info h2 {
+    font-size: 1.8rem;
+    color: #141e3f;
+  }
+  
+  .account-details p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .user-projects h2 {
+    font-size: 1.8rem;
+    color: #141e3f;
+    margin-bottom: 20px;
+  }
+  
+  .projects-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .project-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-card h3 {
+    color: #141e3f;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .project-card p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  /* Responsive styling for smaller screens */
+  @media screen and (max-width: 768px) {
+    .profile-page {
+      padding: 20px;
+    }
+  
+    .profile-header h1 {
+      font-size: 2rem;
+    }
+  
+    .profile-header p {
+      font-size: 1rem;
+    }
+  
+    .profile-info {
+      padding: 15px;
+    }
+  
+    .profile-info h2,
+    .user-projects h2 {
+      font-size: 1.5rem;
+    }
+  
+    .account-details p,
+    .project-card p {
+      font-size: 1rem;
+    }
+  
+    .project-card h3 {
+      font-size: 1.3rem;
+    }
+  }
+  

@@ -1,0 +1,52 @@
+/* General Styling for ProjectDocsPage */
+.project-docs-page {
+    padding: 20px;
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.docs-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.docs-header h1 {
+    font-size: 36px;
+    color: #141e3f; /* Brand color */
+}
+
+.docs-header p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Filter Section */
+.filter-section {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.docs-list-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .filter-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .docs-header h1 {
+        font-size: 28px;
+    }
+
+    .docs-header p {
+        font-size: 16px;
+    }
+}
