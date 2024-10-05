@@ -4,18 +4,21 @@
     font-family: 'Helvetica', sans-serif;
 }
 
-.primary-button {
-    padding: 10px 20px;
+.primary-button, .secondary-button {
+    padding: 12px 25px;
     background-color: #00CC99;
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+    font-size: 1.2rem; /* Standard font size */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 8px; /* Rounded buttons */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.primary-button:hover {
+.primary-button:hover, .secondary-button:hover {
     background-color: #009973;
+    transform: translateY(-5px); /* Floating effect on hover */
 }
 
 .homepage-intro {
@@ -23,28 +26,87 @@
     text-align: center;
     background-color: #f9f9f9;
     animation: slideUp 1.5s ease-in-out;
+    border-radius: 15px; /* Rounded edges for intro section */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Floating shadow effect */
 }
 
 .homepage-intro h2 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    color: #141e3f; /* Lab4GPS Blue */
 }
 
 .homepage-intro p {
     font-size: 1.25rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    line-height: 1.6; /* Improved readability */
 }
 
-.homepage-projects, .homepage-student-repository {
+.homepage-features {
     padding: 40px;
     text-align: center;
     background-color: #fff;
     animation: slideUp 1.5s ease-in-out;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
 }
 
-.homepage-projects h2, .homepage-student-repository h2 {
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow for a more pronounced floating effect */
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.feature-item:hover {
+    transform: translateY(-10px); /* Floating hover effect */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #141e3f;
+}
+
+.feature-item p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.homepage-projects, .homepage-student-repository, .homepage-get-started {
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+    animation: slideUp 1.5s ease-in-out;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.homepage-projects h2, .homepage-student-repository h2, .homepage-get-started h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #141e3f;
+}
+
+.homepage-projects p, .homepage-student-repository p, .homepage-get-started p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: #555;
 }
 
 .view-more {
@@ -54,25 +116,12 @@
     text-decoration: none;
     font-size: 1.25rem;
     border-bottom: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
 .view-more:hover {
     border-color: #00CC99;
-}
-
-.secondary-button {
-    padding: 10px 20px;
-    background-color: #141e3f;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.secondary-button:hover {
-    background-color: #0d152b;
+    transform: translateY(-3px); /* Floating hover effect */
 }
 
 /* Animations */
@@ -83,11 +132,16 @@
 
 /* Responsive design */
 @media screen and (max-width: 768px) {
-    .homepage-intro h2, .homepage-projects h2, .homepage-student-repository h2 {
+    .homepage-intro h2, .homepage-projects h2, .homepage-student-repository h2, .homepage-get-started h2 {
         font-size: 2rem;
     }
 
     .primary-button, .secondary-button {
-        font-size: 0.9rem;
+        font-size: 1rem;
+    }
+
+    .features-grid {
+        flex-direction: column;
+        gap: 20px;
     }
 }

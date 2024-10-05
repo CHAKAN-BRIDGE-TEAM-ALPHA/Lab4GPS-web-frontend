@@ -2,8 +2,17 @@ import React from 'react';
 import './DocumentCategories.css'; // Importing the styling for DocumentCategories
 
 const DocumentCategories = ({ selectedCategory, onCategoryChange }) => {
-  // Dummy categories to show if no categories are fetched
-  const categories = ['All', 'Design', 'Engineering', 'Research', 'Testing', 'Chakan Bridge'];
+  // Updated categories based on the Lab4GPS Archive project
+  const categories = [
+    'All',
+    'Project Proposals',
+    'Research Papers',
+    'Multimedia',
+    'Chakan Bridge',
+    'Innovation',
+    'Global Solutions',
+    'Collaborative Projects'
+  ];
 
   return (
     <div className="document-categories">

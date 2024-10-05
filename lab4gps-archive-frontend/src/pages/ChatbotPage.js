@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './ChatbotPage.css'; // Importing the styling file for this page
 import ChatWindow from '../../src/Chatbot/ChatWindow'; // Chat window component
 import { AiOutlineMessage } from 'react-icons/ai'; // React Chatbot Icon
+import { AiOutlineClose } from 'react-icons/ai'; // React Close Icon
 
 const ChatbotPage = () => {
   const [isOpen, setIsOpen] = useState(false); // State to toggle chatbot visibility
@@ -27,6 +28,7 @@ const ChatbotPage = () => {
           <div className="chatbot-header">
             <h2>Lab4GPS AI Chatbot</h2>
             <p>Ask about the Chakan Bridge or Lab4GPS projects</p>
+            <AiOutlineClose className="close-icon" size={25} onClick={toggleChatbot} /> {/* Close Icon */}
           </div>
           <div className="chatbot-body">
             <ChatWindow initialMessages={initialMessages} />

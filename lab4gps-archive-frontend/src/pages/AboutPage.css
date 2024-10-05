@@ -17,7 +17,7 @@
 }
 
 .about-hero h1 {
-    font-size: 3.5rem;
+    font-size: 3rem; /* Matching with header size */
     margin-bottom: 20px;
     letter-spacing: 1px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -25,7 +25,7 @@
 }
 
 .about-hero p {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Standardized with paragraph size in the header */
     max-width: 900px;
     margin: 0 auto;
     animation: fadeInUp 2.5s ease-in-out;
@@ -57,7 +57,7 @@
 
 .about-card h2 {
     color: #141e3f; /* Lab4GPS Blue */
-    font-size: 2.2rem;
+    font-size: 2rem; /* Standardizing with similar sections */
     margin-bottom: 15px;
     border-bottom: 2px solid #00CC99;
     padding-bottom: 10px;
@@ -66,7 +66,7 @@
 
 .about-card p {
     color: #555;
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Standardized */
     line-height: 1.8;
     transition: color 0.3s ease;
 }
@@ -84,7 +84,7 @@
 }
 
 .about-values h2 {
-    font-size: 2.8rem;
+    font-size: 2.5rem; /* Standardized */
     margin-bottom: 30px;
     color: white;
 }
@@ -95,7 +95,7 @@
 }
 
 .about-values li {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* Standardized */
     color: #ddd;
     margin: 15px 0;
     transition: color 0.3s ease;
@@ -153,11 +153,11 @@
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .about-hero h1 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
 
     .about-hero p {
-        font-size: 1.2rem;
+        font-size: 1rem; /* Responsive size */
     }
 
     .about-details {
@@ -165,10 +165,10 @@
     }
 
     .about-values h2 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .about-values li {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 }

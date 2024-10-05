@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
-import logo from '../../assets/logos/logo.png'; // Assuming logo is stored in logos directory
-import { Link } from 'react-router-dom'; // Using Link from react-router-dom for client-side navigation
+import logo from '../../assets/logos/6e45a98bceca4f0997f01fb640ddfb39v89sL4fANDwZR75y-0 (1).png'; // Assuming logo is stored in logos directory
+import { NavLink } from 'react-router-dom'; // Using NavLink for client-side navigation
 
 const Header = () => {
     return (
@@ -11,13 +11,15 @@ const Header = () => {
             </div>
             <nav className="header-nav">
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/projects">Projects</Link></li>
-                    <li><Link to="/students">Student Work</Link></li>
-                    <li><Link to="/upload">Upload</Link></li>
-                    <li><Link to="/dashboard">Dashboard</Link></li>
-                    <li><Link to="/login">Login</Link></li> {/* Added Login link */}
-                    <li><Link to="/register">Signup</Link></li> {/* Added Signup link */}
+                    <li><NavLink to="/" exact activeClassName="active">Home</NavLink></li>
+                    <li><NavLink to="/about" activeClassName="active">About</NavLink></li>
+                    <li><NavLink to="/projects" activeClassName="active">Projects</NavLink></li>
+                    <li><NavLink to="/students" activeClassName="active">Student Repository</NavLink></li>
+                    <li><NavLink to="/upload" activeClassName="active">Documents</NavLink></li>
+                    <li><NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink></li>
+                    <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
+                    <li><NavLink to="/login" activeClassName="active">Login</NavLink></li>
+                    <li><NavLink to="/register" activeClassName="active">Signup</NavLink></li>
                 </ul>
             </nav>
         </header>

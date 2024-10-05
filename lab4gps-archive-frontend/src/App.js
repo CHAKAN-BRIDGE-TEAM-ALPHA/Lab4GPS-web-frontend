@@ -14,6 +14,9 @@ import ChatbotPage from './pages/ChatbotPage';
 import Login from './Auth/Login';
 import Register from './Auth/Register';
 import ForgotPassword from './Auth/ForgotPassword';
+// Importing the About and Contact pages
+import AboutPage from './pages/AboutPage'; 
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
@@ -31,6 +34,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            {/* Adding About and Contact routes */}
+            <Route path="/about" element={<AboutPage />} /> 
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
         <Footer />

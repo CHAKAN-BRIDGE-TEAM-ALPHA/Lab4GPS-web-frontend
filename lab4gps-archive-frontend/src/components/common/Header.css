@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px; /* Reduced padding for a smaller height */
-    background-color: #141e3f; /* Lab4GPS Blue */
+    background: linear-gradient(120deg, white 30%, #00CC99 30%); /* Adjusted slanted gradient background */
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -13,7 +13,7 @@
 
 .header-logo img {
     height: 52px; /* Reduced the logo height */
-    width: 54px;
+    width: 152px;
 }
 
 .header-nav ul {
@@ -28,10 +28,16 @@
     font-family: 'Helvetica', sans-serif;
     font-weight: bold;
     transition: color 0.3s ease;
+    padding-bottom: 5px; /* Space for underline */
 }
 
 .header-nav a:hover {
-    color: #00CC99; /* Lab4GPS Green */
+    color: white; /* Lab4GPS Green */
+}
+
+.header-nav .active {
+    color: white; /* Ensuring the text remains white */
+    border-bottom: 2px solid white; /* White underline for the active page */
 }
 
 /* Responsive styling for smaller screens */
@@ -39,6 +45,7 @@
     .header {
         flex-direction: column;
         padding: 5px 15px; /* Further reduced padding for small screens */
+        background: linear-gradient(120deg, white 25%, #141e3f 25%); /* Keep the adjusted slanted gradient */
     }
 
     .header-nav ul {
