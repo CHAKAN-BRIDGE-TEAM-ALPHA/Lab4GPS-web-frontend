@@ -48,6 +48,37 @@ input {
     background-color: #009977;
 }
 
+.google-login-button {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Google login button styling */
+.google-login-button .google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.google-login-button .google-button:hover {
+    background-color: #f1f1f1;
+}
+
+.google-login-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
 .error-message {
     color: red;
     font-size: 14px;
@@ -67,5 +98,9 @@ input {
 
     .primary-button {
         font-size: 14px;
+    }
+
+    .google-login-button {
+        margin: 15px 0;
     }
 }

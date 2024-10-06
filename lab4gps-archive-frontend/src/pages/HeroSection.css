@@ -11,13 +11,6 @@
     font-family: 'Helvetica', sans-serif; /* Ensure font is consistent */
 }
 
-.floating-plate {
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(5px);
-}
-
 .hero-content {
     text-align: center;
     animation: fadeIn 2s ease-in-out;
