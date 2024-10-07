@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ForgotPassword.css';
-import api from '../services/auth'; // Assuming api service for authentication
+import { sendOtp, verifyOtp, resetPassword } from '../services/auth'; // Import the named functions
 import { useNavigate } from 'react-router-dom'; // Updated import to useNavigate
 
 const ForgotPassword = () => {
@@ -20,7 +20,7 @@ const ForgotPassword = () => {
         setError('');
 
         try {
-            const response = await api.sendOtp({ email }); // Updated API call to send OTP
+            const response = await sendOtp({ email }); // Use the named sendOtp function
             if (response.success) {
                 setMessage('OTP has been sent to your email.');
                 setIsOtpSent(true); // OTP is sent, show the OTP input field
@@ -39,7 +39,7 @@ const ForgotPassword = () => {
         setError('');
 
         try {
-            const response = await api.verifyOtp({ email, otp }); // Updated API call to verify OTP
+            const response = await verifyOtp({ email, otp }); // Use the named verifyOtp function
             if (response.success) {
                 setMessage('OTP has been verified successfully.');
                 setIsOtpVerified(true); // OTP is verified, allow the user to reset the password
@@ -58,7 +58,7 @@ const ForgotPassword = () => {
         setError('');
 
         try {
-            const response = await api.resetPassword({ email, otp, newPassword }); // API call to reset the password
+            const response = await resetPassword({ email, otp, newPassword }); // Use the named resetPassword function
             if (response.success) {
                 setMessage('Your password has been reset successfully. Redirecting to login...');
                 setTimeout(() => {

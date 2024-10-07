@@ -1,47 +1,62 @@
 /* Register Page Styling */
 
 .register-container {
-    max-width: 400px;
+    max-width: 450px; /* Increased for a slightly wider container */
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px; /* Increased padding for more space */
+    background-color: #ffffff; /* Use a clean white background */
+    border-radius: 10px; /* Slightly more rounded corners for a modern look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+    border: 1px solid #e0e0e0; /* Add a subtle border */
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* More space between heading and form */
+    font-size: 24px; /* Increased font size for better readability */
+    color: #333; /* Darker color for more contrast */
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increased space between form elements */
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px; /* More space between label and input */
+    font-weight: 600;
+    font-size: 14px;
+    color: #555; /* Softer text color */
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px 16px; /* More padding for a more comfortable input size */
+    border: 1px solid #ddd; /* Softer border color */
+    border-radius: 6px;
     font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9; /* Light background for inputs */
+    transition: border-color 0.2s ease-in-out; /* Smooth transition */
+}
+
+input:focus {
+    border-color: #00cc99; /* Highlight input when focused */
+    outline: none;
 }
 
 .primary-button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #00cc99;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px; /* Softer button shape */
     cursor: pointer;
     font-size: 16px;
+    font-weight: 600;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
 .primary-button:hover {
@@ -51,7 +66,7 @@ input {
 .google-login-button {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin: 30px 0; /* More space around the Google button */
 }
 
 /* Google login button styling */
@@ -60,10 +75,10 @@ input {
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
@@ -74,8 +89,8 @@ input {
 }
 
 .google-login-button img {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     margin-right: 10px;
 }
 
@@ -83,13 +98,33 @@ input {
     color: red;
     font-size: 14px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Increased space around the error message */
+    font-weight: 500; /* Make the error text bold */
+}
+
+/* Password wrapper styling */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 50px; /* Space for the toggle icon */
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 18px;
 }
 
 /* Responsive for smaller screens */
 @media (max-width: 600px) {
     .register-container {
-        padding: 15px;
+        padding: 20px;
     }
 
     input {
@@ -101,6 +136,31 @@ input {
     }
 
     .google-login-button {
-        margin: 15px 0;
+        margin: 20px 0;
     }
+}
+
+/* OTP form specific styling */
+.otp-container {
+    margin-top: 30px;
+}
+
+.otp-container label {
+    font-size: 16px;
+    color: #333;
+}
+
+.otp-container input {
+    text-align: center; /* Center-align OTP input */
+    letter-spacing: 5px; /* Increase spacing between characters for OTP */
+    font-size: 20px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.otp-container input:focus {
+    border-color: #00cc99;
+    outline: none;
 }

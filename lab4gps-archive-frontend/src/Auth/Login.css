@@ -32,6 +32,25 @@ input {
     font-size: 16px;
 }
 
+/* Password wrapper styling */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 50px; /* Space for the eye icon */
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 18px;
+}
+
 .primary-button {
     width: 100%;
     padding: 10px;

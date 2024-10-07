@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom'; // useNavigate replaces useHistory
-import api from '../services/auth'; // Assuming api service for authentication
+import { login, googleLogin } from '../services/auth'; // Import specific named functions
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'; // Import Google OAuth components
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons for password toggle
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
     const [error, setError] = useState('');
     const navigate = useNavigate(); // useNavigate hook
+
+    // Toggle password visibility
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await api.login({ email, password });
+            const response = await login({ email, password }); // Use the named login function
             if (response.success) {
                 navigate('/dashboard'); // Redirect to dashboard on successful login
             }
@@ -24,7 +31,7 @@ const Login = () => {
 
     const handleGoogleLoginSuccess = (credentialResponse) => {
         // Send Google credential to the backend for validation
-        api.googleLogin({ token: credentialResponse.credential })
+        googleLogin({ token: credentialResponse.credential }) // Use the named googleLogin function
             .then(response => {
                 if (response.success) {
                     navigate('/dashboard'); // Redirect to dashboard on successful login
@@ -53,15 +60,20 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group password-group">
                         <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                        <div className="password-wrapper">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <span onClick={togglePasswordVisibility} className="password-toggle-icon">
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </span>
+                        </div>
                     </div>
                     <button type="submit" className="primary-button">Login</button>
                 </form>
