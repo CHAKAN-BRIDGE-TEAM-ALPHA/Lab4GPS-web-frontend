@@ -1,34 +1,32 @@
 import React, { useState } from 'react';
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'; // Import Google OAuth components
-import { register, verifyOtp, googleLogin } from '../services/auth'; // Add verifyOtp for OTP validation
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons for password toggle
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'; 
+import { register, verifyOtp, googleLogin } from '../services/auth'; 
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const Register = () => {
     const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState('');  // Email is set here
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState(''); // New state for confirm password
-    const [otp, setOtp] = useState(''); // State for OTP input
-    const [otpSent, setOtpSent] = useState(false); // To control OTP screen
-    const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State to toggle confirm password visibility
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [otp, setOtp] = useState(''); 
+    const [otpSent, setOtpSent] = useState(false); 
+    const [showPassword, setShowPassword] = useState(false); 
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
     const [error, setError] = useState('');
-    const [otpError, setOtpError] = useState(''); // State for OTP error
-    const navigate = useNavigate(); // useNavigate hook for redirection
+    const [otpError, setOtpError] = useState('');
+    const navigate = useNavigate(); 
 
-    // Toggle password visibility
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
-    // Toggle confirm password visibility
     const toggleConfirmPasswordVisibility = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
-    // Standard email/password registration
+    // Registration handler
     const handleRegister = async (e) => {
         e.preventDefault();
 
@@ -39,12 +37,13 @@ const Register = () => {
         }
 
         try {
-            const response = await register({ name, email, password }); // Use the named register function
-            if (response.success) {
-                setOtpSent(true); // Change screen to OTP entry
+            const response = await register({ name, email, password });
+            if (response.otp_sent) {
+                setOtpSent(true); // Change to OTP screen after registration
+            } else {
+                setError('Failed to send OTP. Please try again.');
             }
         } catch (err) {
-            // Check if the backend provides a specific error message
             if (err && err.email) {
                 setError(err.email[0]);
             } else {
@@ -53,31 +52,34 @@ const Register = () => {
         }
     };
 
-    // Handle OTP verification
+    // OTP verification handler
     const handleOtpVerification = async (e) => {
         e.preventDefault();
+
         try {
-            const response = await verifyOtp({ email, otp }); // Assuming an OTP verification API
+            // Explicitly passing the `email` along with `otp`
+            const response = await verifyOtp({ email, otp });
             if (response.success) {
-                navigate('/login'); // Redirect to login after successful OTP verification
+                navigate('/login'); // Redirect to login after OTP verification
+            } else {
+                setOtpError('Invalid OTP. Please try again.');
             }
         } catch (err) {
             setOtpError('Invalid OTP. Please try again.');
         }
     };
 
-    // Handle Google login success
+    // Handle Google registration
     const handleGoogleRegisterSuccess = (credentialResponse) => {
-        googleLogin({ token: credentialResponse.credential }) // Use the named googleLogin function
+        googleLogin({ token: credentialResponse.credential })
             .then(response => {
                 if (response.success) {
-                    navigate('/dashboard'); // Redirect to dashboard after successful Google registration
+                    navigate('/dashboard');
                 }
             })
             .catch(() => setError('Google registration failed. Please try again.'));
     };
 
-    // Handle Google login failure
     const handleGoogleRegisterFailure = () => {
         setError('Google registration failed. Please try again.');
     };
@@ -135,6 +137,7 @@ const Register = () => {
                     </span>
                 </div>
             </div>
+            {error && <p className="error-message">{error}</p>}
             <button type="submit" className="primary-button">Register</button>
         </form>
     );
@@ -152,6 +155,7 @@ const Register = () => {
                     required
                 />
             </div>
+            {otpError && <p className="error-message">{otpError}</p>}
             <button type="submit" className="primary-button">Verify OTP</button>
         </form>
     );
@@ -160,8 +164,6 @@ const Register = () => {
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
             <div className="register-container">
                 <h2>{otpSent ? 'Verify Your Email' : 'Create Your Account'}</h2>
-                {error && <p className="error-message">{error}</p>}
-                {otpError && <p className="error-message">{otpError}</p>}
                 {otpSent ? otpForm : registrationForm}
                 <p>Or</p>
                 {/* Google Login Button */}

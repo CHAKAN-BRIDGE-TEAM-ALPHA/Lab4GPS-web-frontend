@@ -11,15 +11,15 @@ const Header = () => {
             </div>
             <nav className="header-nav">
                 <ul>
-                    <li><NavLink to="/" exact activeClassName="active">Home</NavLink></li>
-                    <li><NavLink to="/about" activeClassName="active">About</NavLink></li>
-                    <li><NavLink to="/projects" activeClassName="active">Projects</NavLink></li>
-                    <li><NavLink to="/students" activeClassName="active">Student Repository</NavLink></li>
-                    <li><NavLink to="/upload" activeClassName="active">Documents</NavLink></li>
-                    <li><NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink></li>
-                    <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
-                    <li><NavLink to="/login" activeClassName="active">Login</NavLink></li>
-                    <li><NavLink to="/register" activeClassName="active">Signup</NavLink></li>
+                    <li><NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink></li>
+                    <li><NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>About</NavLink></li>
+                    <li><NavLink to="/projects" className={({ isActive }) => (isActive ? 'active' : '')}>Projects</NavLink></li>
+                    <li><NavLink to="/students" className={({ isActive }) => (isActive ? 'active' : '')}>Student Repository</NavLink></li>
+                    <li><NavLink to="/upload" className={({ isActive }) => (isActive ? 'active' : '')}>Documents</NavLink></li>
+                    <li><NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>Dashboard</NavLink></li> {/* Navigate to UserDashboard */}
+                    <li><NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>Contact</NavLink></li>
+                    <li><NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : '')}>Login</NavLink></li>
+                    <li><NavLink to="/register" className={({ isActive }) => (isActive ? 'active' : '')}>Signup</NavLink></li>
                 </ul>
             </nav>
         </header>

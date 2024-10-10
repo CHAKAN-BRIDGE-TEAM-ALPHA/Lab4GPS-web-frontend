@@ -14,8 +14,10 @@ import ChatbotPage from './pages/ChatbotPage';
 import Login from './Auth/Login';
 import Register from './Auth/Register';
 import ForgotPassword from './Auth/ForgotPassword';
-import AboutPage from './pages/AboutPage'; 
-import ContactPage from './pages/ContactPage'; 
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import UserDashboard from './Dashboard/UserDashboard'; // Importing UserDashboard
+import AdminDashboard from './Dashboard/AdminDashboard'; // Importing AdminDashboard
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute'; // Importing ProtectedRoute component
 
@@ -31,12 +33,14 @@ function App() {
               <Route path="/projects" element={<ProjectDocsPage />} />
               <Route path="/students" element={<RepositoryPage />} />
               <Route path="/upload" element={<UploadPage />} />
-              
+
               {/* Protected Routes */}
               <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
               <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
+              <Route path="/admin-dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} /> {/* AdminDashboard route */}
               
               {/* Public Routes */}
+              <Route path="/dashboard" element={<UserDashboard />} /> {/* UserDashboard route is now public */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />

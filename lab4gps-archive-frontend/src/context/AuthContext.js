@@ -42,14 +42,20 @@ export const AuthProvider = ({ children }) => {
     const handleLogin = async (credentials) => {
         try {
             const response = await login(credentials);
-            localStorage.setItem('user', JSON.stringify(response.user));
-            localStorage.setItem('access_token', response.tokens.access);
-            localStorage.setItem('refresh_token', response.tokens.refresh);
-            setUser(response.user);
-            navigate('/dashboard'); // Navigate to the dashboard after successful login
+            if (response.tokens) {
+                localStorage.setItem('user', JSON.stringify(response.user));
+                localStorage.setItem('access_token', response.tokens.access);
+                localStorage.setItem('refresh_token', response.tokens.refresh);
+                setUser(response.user);
+                navigate('/dashboard'); // Navigate to the dashboard after successful login
+            }
         } catch (error) {
-            console.error('Login failed:', error);
-            throw error;
+            if (error.message === 'Please verify your email before logging in.') {
+                throw new Error('Please verify your email before logging in.');
+            } else {
+                console.error('Login failed:', error);
+                throw error;
+            }
         }
     };
 
@@ -57,7 +63,11 @@ export const AuthProvider = ({ children }) => {
     const handleRegister = async (data) => {
         try {
             const response = await register(data);
-            setOtpSent(true); // Set OTP sent state
+            if (response.otp_sent) {
+                setOtpSent(true); // Set OTP sent state
+            } else {
+                throw new Error('OTP could not be sent. Please try again.');
+            }
             return response; // Return response to indicate registration success and OTP sent
         } catch (error) {
             console.error('Registration failed:', error);
@@ -68,9 +78,14 @@ export const AuthProvider = ({ children }) => {
     // Handle OTP verification during registration
     const handleVerifyOtp = async (otpData) => {
         try {
-            const response = await verifyOtp(otpData);
-            setUser(response.user); // Set the user after successful OTP verification
-            navigate('/login'); // Redirect to login after OTP verification
+            // Make sure `email` and `otp` are both present and correctly passed
+            const response = await verifyOtp({ email: otpData.email, otp: otpData.otp });
+            if (response.success) {
+                setUser(response.user); // Set the user after successful OTP verification
+                navigate('/login'); // Redirect to login after OTP verification
+            } else {
+                throw new Error('OTP verification failed.');
+            }
         } catch (error) {
             console.error('OTP verification failed:', error);
             throw error;
@@ -139,7 +154,16 @@ export const AuthProvider = ({ children }) => {
     // Provide the user state and authentication actions
     return (
         <AuthContext.Provider value={{
-            user, loading, otpSent, handleLogin, handleRegister, handleVerifyOtp, handleGoogleLogin, handleLogout, handleUpdateUser, handleResetPassword
+            user,
+            loading,
+            otpSent,
+            handleLogin,
+            handleRegister,
+            handleVerifyOtp,
+            handleGoogleLogin,
+            handleLogout,
+            handleUpdateUser,
+            handleResetPassword
         }}>
             {!loading && children}
         </AuthContext.Provider>

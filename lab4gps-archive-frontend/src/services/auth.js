@@ -1,28 +1,29 @@
 import api from './api'; // Import the axios instance
 
-// Register a new user
+// Register a new user and send OTP for verification
 export const register = async (data) => {
     try {
-        const response = await api.post('/auth/register/', data); // Register the user
-        return response.data; // Return the response data
+        const response = await api.post('/auth/register/', data); // Register the user and trigger OTP
+        return response.data; // Return the response data, including OTP sent status
     } catch (error) {
         console.error('Error during registration:', error.response || error);
         throw error.response ? error.response.data : error; // Return any error messages
     }
 };
 
-// Verify OTP after registration
+// Verify OTP after registration to activate the user account
 export const verifyOtp = async (data) => {
     try {
-        const response = await api.post('/auth/verify-otp/', data); // Verify OTP
-        return response.data; // Return the response data
+        // Make sure you're sending `email` and `otp` correctly
+        const response = await api.post('/auth/verify-otp/', { email: data.email, otp: data.otp }); // Verify OTP
+        return response.data; // Return the response data indicating success or failure
     } catch (error) {
         console.error('Error during OTP verification:', error.response || error);
         throw error.response ? error.response.data : error; // Return any error messages
     }
 };
 
-// Login a user
+// Login a user (only allowed after OTP verification)
 export const login = async (data) => {
     try {
         const response = await api.post('/auth/login/', data); // User login
@@ -35,11 +36,14 @@ export const login = async (data) => {
         return response.data; // Return the response data
     } catch (error) {
         console.error('Error during login:', error.response || error);
-        throw error.response ? error.response.data : error; // Return any error messages
+        if (error.response && error.response.data.detail === "Email not verified") {
+            throw new Error('Please verify your email before logging in.');
+        }
+        throw error.response ? error.response.data : error; // Return any other error messages
     }
 };
 
-// Google login
+// Google login (can be handled similarly with OTP verification if required)
 export const googleLogin = async (data) => {
     try {
         const response = await api.post('/auth/google-login/', data); // Google login
@@ -124,10 +128,10 @@ export const sendOtp = async (data) => {
     }
 };
 
-// Verify OTP (if still needed)
+// Verify OTP (if still needed for password reset)
 export const verifyOtpForPasswordReset = async (data) => {
     try {
-        const response = await api.post('/auth/verify-otp/', data); // Verify OTP for password reset
+        const response = await api.post('/auth/verify-otp/', { email: data.email, otp: data.otp }); // Verify OTP for password reset
         return response.data; // Return the response data
     } catch (error) {
         console.error('Error during OTP verification:', error.response || error);
